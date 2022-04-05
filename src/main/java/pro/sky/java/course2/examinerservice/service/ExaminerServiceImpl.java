@@ -9,7 +9,6 @@ import java.util.*;
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
 
-    private final List<Question> randomQuestionsList = new ArrayList<>();
     private final JavaQuestionService questionService;
 
     public ExaminerServiceImpl(JavaQuestionService questionService) {
@@ -17,15 +16,13 @@ public class ExaminerServiceImpl implements ExaminerService {
     }
 
     public Collection<Question> getQuestions(int amount) {
-        Question randomQuestion;
         if (amount > questionService.getAll().size()) {
             throw new QuestionAlreadyExists("Запрошено большее количество вопросов, чем хранится в списке.");
         }
+        Set<Question> randomQuestionsList = new HashSet<>();
         while (randomQuestionsList.size() < amount) {
-            randomQuestion = questionService.getRandomQuestion();
-            if (!randomQuestionsList.contains(randomQuestion)) {
+            Question randomQuestion = questionService.getRandomQuestion();
                 randomQuestionsList.add(randomQuestion);
-            }
         }
         return randomQuestionsList;
     }

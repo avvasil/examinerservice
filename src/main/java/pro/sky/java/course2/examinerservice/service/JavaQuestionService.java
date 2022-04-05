@@ -17,23 +17,12 @@ public class JavaQuestionService implements QuestionService {
         return addingQuestion;
     }
 
-//    @Override
-//    public Question add(Question question) {
-//        questions.add(question);
-//        return question;
-//    }
-
     @Override
     public Question remove(String question, String answer) {
         Question removingQuestion = new Question(question, answer);
         questions.remove(removingQuestion);
         return removingQuestion;
     }
-
-//    @Override
-//    public Question remove(Question question) {
-//        return null;
-//    }
 
     @Override
     public Collection<Question> getAll() {
