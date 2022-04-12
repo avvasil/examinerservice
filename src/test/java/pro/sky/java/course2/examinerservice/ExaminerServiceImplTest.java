@@ -1,5 +1,6 @@
 package pro.sky.java.course2.examinerservice;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,7 +22,7 @@ public class ExaminerServiceImplTest {
     private final Question question2 = new Question("Сколько бит в byte", "8");
 
     @Mock
-    private JavaQuestionService javaQuestionService;
+    private JavaQuestionService questionService;
 
     @InjectMocks
     private ExaminerServiceImpl examinerService;
@@ -29,13 +30,12 @@ public class ExaminerServiceImplTest {
     @Test
     public void getRandomQuestionList() {
 
-        Set<Question> questions = new HashSet<>();
+        Collection<Question> questions = new ArrayList<>();
         questions.add(question1);
-        questions.add(question2);
 
         Question actual = new Question("Сколько бит в int", "16");
 
-        Mockito.when(examinerService.getQuestions(1)).thenReturn(questions);
-        assertEquals(javaQuestionService.getRandomQuestion(), actual);
+        Mockito.when(questionService.getRandomQuestion()).thenReturn(actual);
+        Assertions.assertEquals(questionService.getRandomQuestion(),question1);
     }
 }
