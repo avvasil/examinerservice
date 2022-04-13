@@ -14,10 +14,10 @@ public class JavaQuestionServiceTest {
     private final JavaQuestionService out = new JavaQuestionService();
     private final Question question1 = new Question("Сколько бит в int", "16");
     private final Question question2 = new Question("Сколько бит в byte", "8");
-    String q1 = "Сколько бит в int";
-    String q2 = "Сколько бит в byte";
-    String a1 = "16";
-    String a2 = "8";
+    private String q1 = "Сколько бит в int";
+    private String q2 = "Сколько бит в byte";
+    private String a1 = "16";
+    private String a2 = "8";
 
     @Test
     public void javaQuestionTestAddQuestion() {
